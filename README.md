@@ -1,7 +1,7 @@
 # sharefileIPFS
 
 ```sh
-npm install electron -g
+$ npm install electron -g
 ```
 
 ```sh
