@@ -1,5 +1,13 @@
 # sharefileIPFS
 
-- npm i
+```sh
+npm install electron -g
+```
 
-- npm r
+```sh
+$ sudo npm install
+```
+
+```sh
+$ electron .
+```
