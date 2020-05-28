@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+        Logout
+    </title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+</head>
+
+<body class="bg-default">
+    <div class="container" id="form-container" style="margin-top: 10px">
+        <p>You are loged out!</p>
+        <button id="log-in-again" onclick="login()">log in again here</button>
+    </div>
+    <script>
+        const userStore = require("../service/UserStore.js");
+        const activeUser = require('../service/UserStore.js');
+        const email = activeUser.get('activeEmail');
+        const {
+            ipcRenderer
+        } = require("electron");
+        ipcRenderer.on("log-out-noti", () => {      
+            window.location = "https://mail.google.com/mail/u/0/?logout&hl=en";
+        });
+    </script>
+</body>
+
+</html>

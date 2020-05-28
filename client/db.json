@@ -1,0 +1,21 @@
+"user": {
+  "email": "",
+  "name": "",
+}
+
+"file": {
+  "cid": "require",
+  "name": "require",
+  "type": "require",
+  "size": "number, require",
+  "parent_folder": "do not require",
+  "hash_key": "do not require",
+  "previous_cid": "do not require",
+  "owner": "require",
+  "user": [
+    {
+      "email": "",
+      "permission": ["read", "write"]
+    },
+  ]
+}

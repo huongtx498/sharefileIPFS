@@ -1,0 +1,65 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "Desktop client implementation with Electron JS and Node JS in IPFS project (IT4421)",
+  "main": "main.js",
+  "scripts": {
+    "dev": "NODE_ENV=dev electron .",
+    "start": "electron .",
+    "lint": "eslint",
+    "test:all": "mocha -R mocha-jenkins-reporter --timeout 20000 \"./test/**/*test-*.js\"",
+    "test:one": "mocha --watch -u bdd \"./test/**/*test-*.js\" --grep 'test-init-window'",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/is_soict/it4421_20191/8_minhnb.git"
+  },
+  "author": "Hung Nguyen Quang <nqhung291@gmail.com>",
+  "maintainers": [
+    "nqhung291@gmail.com"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "babel-eslint": "^10.0.3",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "electron": "^6.0.10",
+    "electron-builder": "^21.2.0",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "mocha": "^6.2.1",
+    "mocha-jenkins-reporter": "^0.4.2",
+    "spectron": "^8.0.0"
+  },
+  "dependencies": {
+    "ajv": "^6.10.2",
+    "amqplib": "^0.5.5",
+    "archiver": "^3.1.1",
+    "axios": "^0.19.0",
+    "chokidar": "^3.1.1",
+    "dotenv": "^8.1.0",
+    "electron-reload": "^1.5.0",
+    "electron-store": "^5.0.0",
+    "electron-tray-window": "^1.2.5",
+    "google-auth-library": "^5.5.0",
+    "googleapis": "^44.0.0",
+    "ipfs": "^0.40.0",
+    "lodash": "^4.17.15",
+    "multiaddr": "^7.1.0",
+    "sweetalert": "^2.1.2"
+  },
+  "build": {
+    "appId": "hust.ipfs",
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    }
+  }
+}

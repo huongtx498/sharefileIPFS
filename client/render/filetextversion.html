@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title id="file-name"> </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="./assets/images/brand/favicon.png" rel="icon" type="image/png">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="./assets/js/plugins/nucleo/css/nucleo.css" rel="stylesheet" />
+    <link href="./assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="./assets/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
+</head>
+
+<body class="">
+
+    <div class=" bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+                <div class="col-8">
+                    <h3 class="mb-0">File Content</h3>
+                </div>
+                <!-- <div class="col-4 text-right">
+                    <a href="#!" class="btn btn-sm btn-primary" id="edit-file">Edit</a>
+                </div> -->
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="file-data"></div>
+
+        </div>
+    </div>
+    <script>
+        const fs = require("fs");
+        const {
+            ipcRenderer
+        } = require("electron");
+        const user = process.env.USER || '';
+        const userStore = require('../service/UserStore.js');
+        ipcRenderer.on('show-file-version', (event, ver_cid) => {
+            console.log(ver_cid);
+            const fileName = "QmQgZ4LJC1VzxaS3CEgtmTqSLKCdXhx39SnzBn8KQFqAAv" + ".txt";
+            console.log(fileName);
+            const filePath =
+                `/home/${user}/ipfsbox/${userStore.getActiveUser()}/backup/${ver_cid}.txt`;
+            setTimeout(() => {
+                fs.readFile(filePath, (error, data) => {
+                    if (error) {
+                        throw error;
+                        console.log(' Error');
+                    } else {
+                        const filestring = data.toString();
+                        console.log(data.toString());
+                        document.getElementById("file-data").innerHTML = filestring;
+                        console.log(filestring);
+                        console.log(filePath);
+                        document.getElementById("file-name").innerHTML = ver_cid;
+                    }
+
+                });
+
+            }, 2000);
+
+
+        });
+    </script>
+
+    <!--   Core   -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script src="../assets/js/plugins/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!--   Optional JS   -->
+    <script src="../assets/js/plugins/chart.js/dist/Chart.min.js"></script>
+    <script src="../assets/js/plugins/chart.js/dist/Chart.extension.js"></script>
+    <!--   Argon JS   -->
+    <script src="./assets/js/argon-dashboard.min.js?v=1.1.0"></script>
+    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+    <script>
+        window.TrackJS &&
+            TrackJS.install({
+                token: "ee6fab19c5a04ac1a32a645abde4613a",
+                application: "argon-dashboard-free"
+            });
+    </script>
+</body>
+
+</html>
+
+</html>
